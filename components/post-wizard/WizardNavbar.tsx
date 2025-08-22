@@ -1,4 +1,3 @@
-// components/WizardNavbar.tsx
 "use client";
 import { cn } from "@/lib/utils";
 
@@ -28,7 +27,6 @@ export default function WizardNavbar({
               key={step.id}
               className="flex-1 flex flex-col items-center relative"
             >
-              {/* Connector line */}
               {index !== steps.length - 1 && (
                 <div
                   className={cn(
@@ -38,7 +36,6 @@ export default function WizardNavbar({
                 />
               )}
 
-              {/* Step circle */}
               <div
                 className={cn(
                   "flex items-center justify-center w-10 h-10 rounded-full border-2 transition-all z-10 cursor-pointer",
@@ -52,7 +49,6 @@ export default function WizardNavbar({
                 {isCompleted ? "✓" : step.id}
               </div>
 
-              {/* Label */}
               <span
                 className={cn(
                   "mt-2 text-sm text-center w-max transition-colors",
