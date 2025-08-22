@@ -93,6 +93,10 @@ export default function PostWizard({
           fieldErrors[fieldName] = err.message;
         });
         setErrors(fieldErrors);
+        toast({
+          title: "Validation Error",
+          description: "Please check the input fields.",
+        });
       } else {
         console.error("Error creating post:", error);
         toast({
