@@ -1,0 +1,103 @@
+[
+  {
+    "id": "17557832007929gy4j80vo",
+    "createdAt": "2025-08-21T13:33:20.793Z",
+    "updatedAt": "2025-08-21T13:35:33.393Z",
+    "title": "The Importance of Time Management",
+    "author": "Isnu Munandar",
+    "summary": "Time management is not about working harder, but about working smarter. With good habits and discipline, we can make the most of our time and live a more balanced, meaningful life.",
+    "content": "Time is one of the most valuable resources we have. Unlike money or material things, once time is gone, it can never come back. That’s why learning how to manage our time effectively is an important skill for both personal and professional life.\n\n#### Benefits of Good Time Management\n\n1. Increases productivity\n    By organizing tasks, we can finish more work in less time.\n2. Reduces stress\n    Clear schedules help us avoid last-minute panic and deadlines.\n3. Improves work-life balance\n    Managing time wisely gives us more space for family, hobbies, and rest.\n\n#### Simple Tips for Better Time Management\n\n- Make a daily to-do list.\n- Set priorities: focus on what is important, not just urgent.\n- Avoid procrastination by starting small.\n- Take short breaks to stay fresh and focused.",
+    "category": "Social",
+    "image": null,
+    "views": 8
+  },
+  {
+    "id": "1755770295857vfj57olw6",
+    "createdAt": "2025-08-21T09:58:15.858Z",
+    "updatedAt": "2025-08-21T13:03:40.129Z",
+    "title": "Why a Healthy Lifestyle Matters",
+    "author": "Isnu Munandar",
+    "summary": "A healthy lifestyle doesn’t mean big changes overnight. Small, consistent steps can make a big difference. By choosing healthier habits, we can enjoy a better quality of life today and in the future.",
+    "content": "Living a healthy lifestyle is more than just a trend — it’s a necessity. In a world where people are often busy with work and daily routines, health is sometimes forgotten. However, taking care of our body and mind should always be a priority.\n\n#### Benefits of a Healthy Lifestyle\n\n1. More energy every day\n    Eating balanced meals and exercising regularly keep the body active and strong.\n2. Better mental health\n    A good lifestyle reduces stress and improves overall mood.\n3. Long-term health benefits\n    Healthy habits help prevent serious illnesses such as diabetes, heart disease, and obesity.\n\n#### Simple Ways to Start\n\n- Drink more water instead of sugary drinks.\n- Exercise at least 30 minutes a day.\n- Get enough sleep every night.\n- Reduce junk food and eat more fruits and vegetables.",
+    "category": "Healthy",
+    "image": "https://images.unsplash.com/photo-1695927621677-ec96e048dce2?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c2VsZmllJTIwbWFufGVufDB8fDB8fHww",
+    "views": 8
+  },
+  {
+    "id": "17557666510303nycp4r18",
+    "createdAt": "2025-08-21T08:57:31.031Z",
+    "updatedAt": "2025-08-21T08:57:31.031Z",
+    "title": "The Importance of Learning Programming in the Digital Era",
+    "author": "Isnu Munandar",
+    "summary": "Learning programming is a long-term investment. Although it may feel challenging at first, this skill will be very useful for personal growth and career development in the future.",
+    "content": "In today’s digital era, technology is growing rapidly. Almost every aspect of our lives is connected to digital systems — from communication and education to entertainment and business. One of the most valuable skills to learn today is **programming**.\n\nLearning programming is not only useful for people who want to work in the tech industry but also for many other professions. By understanding the basics of coding, anyone can adapt more easily to technological changes and even create their own solutions to everyday problems.\n\n#### Benefits of Learning Programming\n\n1. Improves logical thinking and problem-solving skills\n    Programming helps us think critically and solve problems step by step.\n2. Opens wider career opportunities\n    Many companies need developers to build applications, websites, and digital systems.\n3. Encourages creativity\n    With programming skills, you can turn your own ideas into digital products such as apps, games, or websites.",
+    "category": "Software Engineering",
+    "image": "https://images.unsplash.com/photo-1457305237443-44c3d5a30b89?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8d2ViJTIwZGV2ZWxvcG1lbnR8ZW58MHx8MHx8fDA%3D",
+    "views": 17
+  },
+  {
+    "id": "post-5",
+    "createdAt": "2022-05-01T16:00:00.000Z",
+    "updatedAt": "2022-05-01T16:00:00.000Z",
+    "title": "The Benefits of Learning a New Language",
+    "views": 82,
+    "summary": "Learning a new language can have numerous benefits, including improved cognitive skills and increased cultural understanding. In this article, we explore the benefits of language learning and provide tips for getting started.",
+    "content": "Learning a new language can have numerous benefits, including improved cognitive skills and increased cultural understanding. By learning a new language, you can broaden your horizons and improve your career prospects.\n\nIn this article, we will explore the benefits of language learning and provide tips for getting started.",
+    "category": "Education",
+    "image": "https://images.unsplash.com/photo-1550592704-6c76defa9985?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "pitch": "Discover the benefits of learning a new language",
+    "author": "Sarah Lee"
+  },
+  {
+    "id": "post-4",
+    "createdAt": "2022-04-10T12:00:00.000Z",
+    "updatedAt": "2022-04-10T12:00:00.000Z",
+    "title": "The Impact of Social Media on Society",
+    "views": 150,
+    "summary": "Social media has become an integral part of modern life, but its impact on society is a topic of ongoing debate. In this article, we explore the pros and cons of social media and its effects on our relationships and mental health.",
+    "content": "Social media has become an integral part of modern life, but its impact on society is a topic of ongoing debate. While social media has many benefits, such as connecting us with others and providing a platform for self-expression, it also has its drawbacks.\n\nIn this article, we will explore the pros and cons of social media and its effects on our relationships and mental health.",
+    "category": "Social Media",
+    "image": "https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "pitch": "Understand the impact of social media on society",
+    "author": "Michael Brown"
+  },
+  {
+    "id": "post-3",
+    "createdAt": "2022-03-20T10:00:00.000Z",
+    "updatedAt": "2025-08-20T15:45:21.958Z",
+    "title": "The Benefits of Meditation for Mental Health",
+    "views": 200,
+    "summary": "Meditation has been shown to have numerous benefits for mental health, including reduced stress and anxiety. In this article, we explore the science behind meditation and how it can improve your mental wellbeing.",
+    "content": "Meditation has been shown to have numerous benefits for **mental health**, including reduced stress and anxiety. By taking just a few minutes each day to practice mindfulness, you can improve your mental wellbeing and increase your overall sense of calm.\n\nIn this article, we will explore the science behind meditation and provide tips for incorporating it into your daily routine.",
+    "category": "Wellness",
+    "image": "https://images.unsplash.com/photo-1477332552946-cfb384aeaf1c?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "pitch": "Improve your mental wellbeing with meditation",
+    "author": "Emily Johnson"
+  },
+  {
+    "id": "post-2",
+    "createdAt": "2022-02-15T14:30:00.000Z",
+    "updatedAt": "2025-08-20T16:30:44.587Z",
+    "title": "The Future of Virtual Reality",
+    "views": 53,
+    "summary": "Virtual reality is changing the way we experience entertainment, education, and even healthcare. In this article, we explore the latest advancements in VR technology and what we can expect in the future.",
+    "content": "**Virtual reality** is changing the way we experience entertainment, education, and even healthcare. With the ability to immerse ourselves in entirely new worlds, VR is opening up new possibilities for industries and individuals alike.\n\nIn this article, we will delve into the latest advancements in VR technology and what we can expect in the future.",
+    "category": "Technology",
+    "image": "https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "pitch": "Discover the latest advancements in VR technology",
+    "author": "Jane Smith"
+  },
+  {
+    "id": "post-1",
+    "createdAt": "2022-01-01T12:00:00.000Z",
+    "updatedAt": "2025-08-20T17:25:59.837Z",
+    "title": "Introduction to AI-Powered Chatbots",
+    "views": 127,
+    "summary": "AI-powered chatbots are revolutionizing the way businesses interact with customers. ",
+    "content": "**AI-powered** chatbots are revolutionizing the way businesses interact with customers. With the ability to understand natural language and respond accordingly, these chatbots can provide 24/7 support and improve customer satisfaction.\n\nIn this article, we will explore the benefits of using **AI-powered** chatbots in your business, including improved customer experience, increased efficiency, and cost savings\n\nMake the switch to **AI-powered** chatbots today and transform your customer support.\n\n",
+    "category": "Artificial Intelligence",
+    "image": "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    "pitch": "Transform your customer support with our AI-powered chatbot",
+    "author": "John Doe"
+  }
+]
