@@ -1,42 +1,42 @@
 import { Post, PostFormData } from "@/types/posts";
-import fs from "fs/promises";
-import path from "path";
+import initialPosts from "@/data/posts.json";
 
-const POSTS_FILE_PATH = path.join(process.cwd(), "data", "posts.json");
+const POSTS_STORAGE_KEY = "posts_data";
 
-export async function getPosts(params?: { search: string }): Promise<Post[]> {
-  const data = await fs.readFile(POSTS_FILE_PATH, "utf8");
-  let posts: Post[] = JSON.parse(data);
+function generateId(): string {
+  return Date.now().toString() + Math.random().toString(36).substr(2, 9);
+}
 
-  if (posts.length === 0) {
+export function getPostsFromStorage(): Post[] {
+  if (typeof window === "undefined") return [];
+
+  try {
+    const stored = localStorage.getItem(POSTS_STORAGE_KEY);
+    if (!stored) {
+      localStorage.setItem(POSTS_STORAGE_KEY, JSON.stringify(initialPosts));
+      return initialPosts;
+    }
+
+    return JSON.parse(stored);
+  } catch (error) {
+    console.error("Error reading posts from localStorage:", error);
     return [];
   }
+}
 
-  if (params && params.search) {
-    posts = posts.filter(
-      (post) =>
-        post.title?.toLowerCase().includes(params?.search.toLowerCase()) ||
-        post.summary?.toLowerCase().includes(params?.search.toLowerCase()) ||
-        post.content?.toLowerCase().includes(params?.search.toLowerCase())
-    );
+export function savePostsToStorage(posts: Post[]): void {
+  if (typeof window === "undefined") return;
+
+  try {
+    localStorage.setItem(POSTS_STORAGE_KEY, JSON.stringify(posts));
+  } catch (error) {
+    console.error("Error saving posts to localStorage:", error);
+    throw new Error("Failed to save posts");
   }
-
-  posts.sort((a, b) => {
-    if (a.createdAt > b.createdAt) return -1;
-    if (a.createdAt < b.createdAt) return 1;
-    return 0;
-  });
-
-  return posts;
 }
 
-export async function getRelatedPosts(category: string): Promise<Post[]> {
-  const posts = await getPosts();
-  return posts.filter((post) => post.category === category);
-}
-
-export async function createPost(postData: PostFormData): Promise<Post> {
-  const posts = await getPosts();
+export function createPost(postData: PostFormData): Post {
+  const posts = getPostsFromStorage();
 
   const newPost: Post = {
     id: generateId(),
@@ -45,22 +45,22 @@ export async function createPost(postData: PostFormData): Promise<Post> {
     title: postData.title,
     author: postData.author,
     summary: postData.summary,
-    content: postData.content,
     category: postData.category,
-    image: postData.image || "",
+    content: postData.content,
+    image: postData.image,
     views: 0,
   };
 
   posts.push(newPost);
-  await savePosts(posts);
+  savePostsToStorage(posts);
   return newPost;
 }
 
-export async function updatePost(
+export function updatePost(
   id: string,
   postData: Partial<PostFormData>
-): Promise<Post | null> {
-  const posts = await getPosts();
+): Post | null {
+  const posts = getPostsFromStorage();
   const postIndex = posts.findIndex((post) => post.id === id);
 
   if (postIndex === -1) {
@@ -74,52 +74,55 @@ export async function updatePost(
   };
 
   posts[postIndex] = updatedPost;
-  await savePosts(posts);
+  savePostsToStorage(posts);
   return updatedPost;
 }
 
-export async function deletePost(id: string): Promise<boolean> {
-  const posts = await getPosts();
+export function deletePost(id: string): boolean {
+  const posts = getPostsFromStorage();
   const filteredPosts = posts.filter((post) => post.id !== id);
 
   if (filteredPosts.length === posts.length) {
     return false;
   }
 
-  await savePosts(filteredPosts);
+  savePostsToStorage(filteredPosts);
   return true;
 }
 
-export async function getPostById(id: string): Promise<Post | null> {
-  const posts = await getPosts();
+export function getPostById(id: string): Post | null {
+  const posts = getPostsFromStorage();
   return posts.find((post) => post.id === id) || null;
 }
 
-async function savePosts(posts: Post[]): Promise<void> {
-  const dirPath = path.dirname(POSTS_FILE_PATH);
-  await fs.mkdir(dirPath, { recursive: true });
-  await fs.writeFile(POSTS_FILE_PATH, JSON.stringify(posts, null, 2));
+export function getRelatedPosts(category: string): Post[] {
+  const posts = getPostsFromStorage();
+  return posts.filter((post) => post.category === category);
 }
 
-export async function getPostViews(id: string): Promise<number> {
-  const post = await getPostById(id);
-  return post?.views || 0;
-}
-
-export async function incrementPostViews(id: string): Promise<number> {
-  const posts = await getPosts();
+export function getPostViews(id: string): number {
+  const posts = getPostsFromStorage();
   const post = posts.find((post) => post.id === id);
+  return post ? post.views : 0;
+}
 
-  if (!post) {
-    return 0;
+export function increasePostViews(id: string): Post | null {
+  const posts = getPostsFromStorage();
+  const postIndex = posts.findIndex((post) => post.id === id);
+
+  if (postIndex === -1) {
+    return null;
   }
 
-  post.views = (post.views || 0) + 1;
-
-  await savePosts(posts);
-  return post.views;
+  posts[postIndex].views += 1;
+  savePostsToStorage(posts);
+  return posts[postIndex];
 }
 
-function generateId(): string {
-  return Date.now().toString() + Math.random().toString(36).substr(2, 9);
+export function initializeSampleData(): void {
+  const existingPosts = getPostsFromStorage();
+
+  if (existingPosts.length === 0) {
+    savePostsToStorage(initialPosts);
+  }
 }

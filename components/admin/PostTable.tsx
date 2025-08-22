@@ -10,41 +10,12 @@ import { formatDate } from "@/lib/utils";
 
 interface PostTableProps {
   posts: Post[];
+  onDelete: (id: string) => void;
 }
 
-const PostTable = ({ posts }: PostTableProps) => {
+const PostTable = ({ posts, onDelete }: PostTableProps) => {
   const { toast } = useToast();
   const router = useRouter();
-
-  const handleDelete = async (id: string) => {
-    if (!confirm("Are you sure you want to delete this post?")) return;
-
-    try {
-      const response = await fetch(`/api/posts/${id}`, {
-        method: "DELETE",
-      });
-
-      if (response.ok) {
-        router.refresh();
-        toast({
-          title: "Post deleted successfully",
-          description: "The post has been removed from your list.",
-        });
-      } else {
-        const errorData = await response.json();
-        toast({
-          title: "Error deleting post",
-          description: errorData.error || "Failed to delete post",
-        });
-      }
-    } catch (error) {
-      console.error("Error deleting post:", error);
-      toast({
-        title: "Error deleting post",
-        description: "Failed to delete post",
-      });
-    }
-  };
 
   return (
     <div className="bg-white shadow overflow-hidden sm:rounded-lg">
@@ -165,7 +136,7 @@ const PostTable = ({ posts }: PostTableProps) => {
                     </Button>
                   </Link>
                   <Button
-                    onClick={() => handleDelete(post.id)}
+                    onClick={() => onDelete(post.id)}
                     className="bg-red-500 text-white hover:bg-red-600"
                   >
                     <Trash2Icon />

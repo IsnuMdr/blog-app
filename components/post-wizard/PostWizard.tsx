@@ -11,6 +11,8 @@ import BasicInformationStep from "./BasicInformationStep";
 import PostDetailStep from "./PostDetailStep";
 import ContentStep from "./ContentStep";
 import ReviewStep from "./ReviewStep";
+import { usePosts } from "@/hooks/usePosts";
+import LoadingSpinner from "../LoadingSpinner";
 
 interface PostWizardProps {
   initialData?: Partial<PostFormData | null>;
@@ -23,8 +25,8 @@ export default function PostWizard({
   isEdit = false,
   id,
 }: PostWizardProps) {
-  const [currentStep, setCurrentStep] = useState(1);
   const [loading, setLoading] = useState(false);
+  const [currentStep, setCurrentStep] = useState(1);
   const [formData, setFormData] = useState<PostFormData>({
     title: initialData?.title || "",
     author: initialData?.author || "",
@@ -34,6 +36,7 @@ export default function PostWizard({
     image: initialData?.image || null,
   });
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const { createPost, updatePost } = usePosts();
 
   const router = useRouter();
 
@@ -58,31 +61,19 @@ export default function PostWizard({
     try {
       await formSchema.parseAsync(formData);
 
-      const url = isEdit ? `/api/posts/${id}` : "/api/posts";
-      const method = isEdit ? "PUT" : "POST";
+      let post;
+      if (isEdit && id) {
+        post = updatePost(id, formData);
+      } else {
+        post = createPost(formData);
+      }
 
-      const response = await fetch(url, {
-        method,
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
-
-      const responseData = await response.json();
-
-      if (response.ok) {
+      if (post) {
         toast({
           title: "Success",
           description: `Post ${isEdit ? "updated" : "created"} successfully!`,
         });
         router.push("/admin");
-      } else {
-        toast({
-          title: "Error",
-          description:
-            "Failed to create post: " + (responseData.error || "Unknown error"),
-        });
       }
     } catch (error) {
       if (error instanceof z.ZodError) {
@@ -103,9 +94,6 @@ export default function PostWizard({
           description: "Network error occurred. Please try again.",
         });
       }
-      setLoading(false);
-    } finally {
-      setLoading(false);
     }
   };
 
@@ -137,14 +125,9 @@ export default function PostWizard({
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-100">
-        <div className="text-center">
-          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-indigo-600 mx-auto"></div>
-          <p className="mt-4 text-gray-600">{`${
-            isEdit ? "Updating" : "Creating"
-          } post...`}</p>
-        </div>
-      </div>
+      <LoadingSpinner
+        message={isEdit ? "Updating post..." : "Creating post..."}
+      />
     );
   }
 
@@ -224,7 +207,10 @@ export default function PostWizard({
             </button>
           ) : (
             <button
-              onClick={handleSubmit}
+              onClick={(e) => {
+                setLoading(true);
+                handleSubmit(e);
+              }}
               className="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700"
             >
               {loading ? "Submitting..." : isEdit ? "Update" : "Create"}

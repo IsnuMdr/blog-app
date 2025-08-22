@@ -3,12 +3,12 @@ export type Post = {
   createdAt: string;
   updatedAt: string;
   title: string;
-  views?: number;
+  views: number;
   summary: string;
   content: string;
   category: string;
   image?: string | null;
-  author?: string;
+  author: string;
 };
 
 export type PostFormData = {
