@@ -1,17 +1,18 @@
-import SearchForm from "@/components/SearchForm";
+"use client";
+
 import PostCard from "@/components/PostCard";
-import { getPosts } from "@/lib/posts";
-import { Post } from "@/types/posts";
+import { usePosts } from "@/hooks/usePosts";
+import SearchForm from "@/components/SearchForm";
+import { useSearchParams } from "next/navigation";
+import { Skeleton } from "@/components/ui/skeleton";
+import { Suspense } from "react";
+import LoadingSpinner from "@/components/LoadingSpinner";
 
-export default async function Home({
-  searchParams,
-}: {
-  searchParams: Promise<{ query: string }>;
-}) {
-  const query = (await searchParams).query;
-  const params = { search: query };
+function HomeContent() {
+  const searchParams = useSearchParams();
+  const query = searchParams.get("query");
 
-  const posts: Post[] = await getPosts(params);
+  const { posts, loading, error } = usePosts(query);
 
   return (
     <>
@@ -24,14 +25,18 @@ export default async function Home({
         </p>
         <SearchForm query={query} />
       </section>
-
       <section className="section_container">
         <p className="text-30-semibold">
           {query ? `Search result for ${query}` : "All Posts"}
         </p>
-
         <ul className="mt-7 card_grid">
-          {posts?.length > 0 ? (
+          {loading ? (
+            Array.from({ length: 6 }).map((_, index) => (
+              <Skeleton key={index} className="h-64 w-full" />
+            ))
+          ) : error ? (
+            <p className="text-red-500">{error}</p>
+          ) : posts?.length > 0 ? (
             posts.map((post) => <PostCard key={post?.id} post={post} />)
           ) : (
             <p className="no-results">No posts found</p>
@@ -39,5 +44,13 @@ export default async function Home({
         </ul>
       </section>
     </>
+  );
+}
+
+export default function Home() {
+  return (
+    <Suspense fallback={<LoadingSpinner />}>
+      <HomeContent />
+    </Suspense>
   );
 }

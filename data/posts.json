@@ -99,17 +99,5 @@
     "image": "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     "pitch": "Transform your customer support with our AI-powered chatbot",
     "author": "John Doe"
-  },
-  {
-    "id": "1755846605905ckl5l1u6i",
-    "createdAt": "2025-08-22T07:10:05.905Z",
-    "updatedAt": "2025-08-22T07:10:05.905Z",
-    "title": "Testing",
-    "author": "Isnu",
-    "summary": "Testing aplikasi dari production",
-    "content": "Ini adalah testing menambahkan post dari production. Teks harus berisi setidaknya 100 karakter\n\n**Aman**\n\n1. Sip\n2. Oke",
-    "category": "Tech",
-    "image": "",
-    "views": 0
   }
 ]

@@ -1,16 +1,22 @@
+"use client";
+
 import Ping from "@/components/Ping";
-import { getPostViews, incrementPostViews } from "@/lib/posts";
-import { after } from "next/server";
+import { usePosts } from "@/hooks/usePosts";
+import { useEffect, useRef } from "react";
 
-const View = async ({ id }: { id: string }) => {
-  const totalViews = await getPostViews(id);
+const View = ({ id }: { id: string }) => {
+  const { getPostViews, increasePostViews } = usePosts();
 
-  after(
-    async () =>
-      await incrementPostViews(id)
-        .then((res) => console.log(res))
-        .catch((err) => console.log(err))
-  );
+  const hasIncremented = useRef(false);
+
+  const totalViews = getPostViews(id);
+
+  useEffect(() => {
+    if (!hasIncremented.current) {
+      increasePostViews(id);
+      hasIncremented.current = true;
+    }
+  }, [id, increasePostViews]);
 
   return (
     <div className="view-container">

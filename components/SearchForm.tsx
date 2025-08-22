@@ -2,12 +2,12 @@ import Form from "next/form";
 import SearchFormReset from "./SearchFormReset";
 import { Search } from "lucide-react";
 
-const SearchForm = ({ query }: { query?: string }) => {
+const SearchForm = ({ query }: { query?: string | null }) => {
   return (
     <Form action="/" scroll={false} className="search-form">
       <input
         name="query"
-        defaultValue={query}
+        defaultValue={query || ""}
         className="search-input"
         placeholder="Search article..."
       />
