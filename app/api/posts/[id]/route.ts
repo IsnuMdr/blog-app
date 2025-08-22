@@ -40,7 +40,11 @@ export async function PUT(
     return NextResponse.json(updatedPost);
   } catch (error) {
     return NextResponse.json(
-      { error: "Failed to update post" },
+      {
+        error:
+          "Failed to update post " +
+          (error instanceof Error ? `: ${error.message}` : ""),
+      },
       { status: 500 }
     );
   }
@@ -61,7 +65,11 @@ export async function DELETE(
     return NextResponse.json({ message: "Post deleted successfully" });
   } catch (error) {
     return NextResponse.json(
-      { error: "Failed to delete post" },
+      {
+        error:
+          "Failed to delete post " +
+          (error instanceof Error ? `: ${error.message}` : ""),
+      },
       { status: 500 }
     );
   }

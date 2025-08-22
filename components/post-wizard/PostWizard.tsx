@@ -85,7 +85,6 @@ export default function PostWizard({
         });
       }
     } catch (error) {
-      setLoading(false);
       if (error instanceof z.ZodError) {
         const fieldErrors: Record<string, string> = {};
         error.issues.forEach((err) => {
@@ -104,6 +103,9 @@ export default function PostWizard({
           description: "Network error occurred. Please try again.",
         });
       }
+      setLoading(false);
+    } finally {
+      setLoading(false);
     }
   };
 

@@ -7,7 +7,11 @@ export async function GET() {
     return NextResponse.json(posts);
   } catch (error) {
     return NextResponse.json(
-      { error: "Failed to fetch posts" },
+      {
+        error:
+          "Failed to fetch posts " +
+          (error instanceof Error ? `: ${error.message}` : ""),
+      },
       { status: 500 }
     );
   }
@@ -21,7 +25,11 @@ export async function POST(request: NextRequest) {
     return NextResponse.json(newPost, { status: 201 });
   } catch (error) {
     return NextResponse.json(
-      { error: "Failed to create post" },
+      {
+        error:
+          "Failed to create post " +
+          (error instanceof Error ? `: ${error.message}` : ""),
+      },
       { status: 500 }
     );
   }

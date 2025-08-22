@@ -26,7 +26,10 @@ export default function AdminLayout({
                   View Portal
                 </Button>
               </Link>
-              <Button className="text-red-600 hover:text-red-800 text-sm font-medium">
+              <Button
+                variant="outline"
+                className="text-red-600 hover:text-red-800 text-sm font-medium"
+              >
                 Sign Out
               </Button>
             </div>
