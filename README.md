@@ -88,15 +88,16 @@ blog-app/
 │   ├── admin/                    # Admin panel
 │   │   ├── page.tsx             # Dashboard overview
 │   │   └── posts/               # Post management
-│   └── api/posts/               # API endpoints
 ├── components/
 │   ├── admin/                   # Admin-specific components
 │   ├── post-wizard/            # Step-by-step creation wizard
 │   └── ui/                     # Reusable UI components
 ├── data/
-│   └── posts.json              # JSON data storage
+│   └── posts.json              # JSON data for initialize
 ├── lib/                        # Utility functions
 ├── types/                      # TypeScript definitions
+├── providers/                  # Global providers
+├── context/                    # React's Context API for global state management
 └── hooks/                      # Custom React hooks
 ```
 
@@ -123,7 +124,8 @@ blog-app/
 
 ### **Data & Validation**
 
-- **JSON File Storage** - Simple, file-based persistence
+- **JSON File** - Data initialize
+- **localStorage** - Persistence of Data
 - **Zod** - Runtime type validation
 
 ## 📖 Usage
@@ -155,19 +157,9 @@ Access the admin panel at `/admin`
 
 #### Editing Posts:
 
-- Click "Edit" on any post in the dashboard
+- Click "Edit" on any post in the admin page
 - Modify content using the same wizard interface
 - Changes are saved immediately
-
-## 🔧 API Endpoints
-
-| Method   | Endpoint          | Description       |
-| -------- | ----------------- | ----------------- |
-| `GET`    | `/api/posts`      | Get all posts     |
-| `POST`   | `/api/posts`      | Create new post   |
-| `GET`    | `/api/posts/[id]` | Get specific post |
-| `PUT`    | `/api/posts/[id]` | Update post       |
-| `DELETE` | `/api/posts/[id]` | Delete post       |
 
 ## 🎨 Customization
 
